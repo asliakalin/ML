@@ -1,18 +1,18 @@
 # Natural Language Processing Notebooks:
 
-1. Sentiment Analysis for Movie Reviews:
+## 1. Sentiment Analysis for Movie Reviews:
     - Generative probabilistic model for sentiment analysis of movie reviews
     - Bag of Words implementation
     - Sentiment Dictionaries, punctuation and syntax analysis
     - Feature engineering focus to increase model accuracy
     
-2. Convolutional Neural Networks (CNNs) for Text Classification
+## 2. Convolutional Neural Networks (CNNs) for Text Classification
     - implements the forward pass and backpropagation for a convolutional neural network with sparse inputs for text classification.
     - Forward Function calculates the probability of the positive class for an input text.
     - Using the gradient update equations for V and U, the backward function implements the gradient updates.
     - Once implemented the forward and backward functions, training the model shows increasing accuracy levels.
     
-3. Word Embeddings via Skipgram Model, Term-Context Matrix, PPMI and Analogous Tasks:
+## 3. Word Embeddings via Skipgram Model, Term-Context Matrix, PPMI and Analogous Tasks:
     - Approximate a Skip-gram word embeddings in a list of movie plot summaries.
     - via positive pointwise mutual information (PPMI) and truncated singular value decomposition (SVD).
     - We have ~42000 summaries containing ~13000000 words, we proceed by creating a vocabulary.

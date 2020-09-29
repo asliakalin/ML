@@ -30,4 +30,19 @@
     - Creates and uses 50d, 100d, 200d and 300d (dimensional) embedded word representations
     - Implements bidirectionality and hyperparameter tuning to the base LSTM model to improve accuracy up to 92.6%
     
+## 5. Transition-Based Dependency Parser:
+    - implements a dependency parser based on tree structures of input sentences and running predictions
+    - Uses GloVe pre-trained word embeddings for optimal performance
+    - A tree structure is said to be projective if there are no crossing dependency edges and/or projection lines. The model uses the definition of projectivity in the algorithm by determining right and left arcs in the sentence and process the sentence following a dependency tree.
+    - The greedy algorithm Design a dumber but really fast algorithm and let the machine learning do the rest. • Eisner’s algorithm searches over many different dependency trees at the same time. 
+    - A transition-based dependency parser only builds one tree, in one left-to-right sweep over the input.Time complexity is linear, O(n), since we only have to treat each word once
+    - This can be achieved since the algorithm is greedy, and only builds one tree, in contrast to Eisner’s algorithm, where all trees are explored 
+    - There is no guarantee that we will even find the best tree given the model, with the arc-standard model 
+    - There is a risk of error propagation • An advantage is that we can use very informative features, for the ML algorithm
+    - 58-65% accuracy wrt to golden trees
     
+## 6. Neural Coreference Resolution:
+    - implementing parts of a Pytorch implementation for neural coreference resolution, inspired by Lee et al.(2017), “End-to-end Neural Coreference Resolution” (EMNLP).
+
+
+## 7. Transformers:

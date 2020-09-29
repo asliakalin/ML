@@ -46,9 +46,11 @@
 - implement the B3 coreference metric as discussed in class without importing external libraries, given below
 - incorporate the word distance information by first initializing distance embedding in init() function, then concatenate the original embedding and the corresponding distance embedding in scorer() ~0.925 accuracy in trainingIn my fancy model implementation (more detailed explanation in writeup)
 - in my final model I used a 10K dictionary instead of 50K, I used 200-d representation of word embeddings instead of 50-d, included similarity between the tokens in word's sentence and in the mention's sentence (cosine similarity), used distance between two words in terms of absolute index, used parallelism between two words' positions in their respective sentences, using bins for the first 2 words, the first 5 words, the first 7 words, the first 10 words and further away. I also tried to included information about gender agreement (male, female, neutral) and number agreement (singular plural) but I couldn't find an already existing dictionary to download to use with the mentions.
-    
- `B^{_{precision}^{3}} = \frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | System_{i} \right |}`
- `B^{_{recall}^{3}} = \frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | Gold_{i} \right |}`
+
+
+<img src="https://render.githubusercontent.com/render/math?math=B^{_{precision}^{3}} =\frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | System_{i} \right |}">
+
+<img src="https://render.githubusercontent.com/render/math?math=B^{_{recall}^{3}} = \frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | Gold_{i} \right |}">
 
 
 ## 7. Transformers in Question Answering & Response Generation:

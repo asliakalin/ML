@@ -30,7 +30,7 @@
     - Creates and uses 50d, 100d, 200d and 300d (dimensional) embedded word representations
     - Implements bidirectionality and hyperparameter tuning to the base LSTM model to improve accuracy up to 92.6%
     
-## 5. Transition-Based Dependency Parser:
+## 5. Transition-Based Dependency Parser and Disambiguation:
     - implements a dependency parser based on tree structures of input sentences and running predictions
     - Uses GloVe pre-trained word embeddings for optimal performance
     - A tree structure is said to be projective if there are no crossing dependency edges and/or projection lines. The model uses the definition of projectivity in the algorithm by determining right and left arcs in the sentence and process the sentence following a dependency tree.
@@ -43,6 +43,24 @@
     
 ## 6. Neural Coreference Resolution:
     - implementing parts of a Pytorch implementation for neural coreference resolution, inspired by Lee et al.(2017), “End-to-end Neural Coreference Resolution” (EMNLP).
+    - implement the B3 coreference metric as discussed in class without importing external libraries. 
+
+$`B^{_{precision}^{3}} = \frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | System_{i} \right |}`$
+$`B^{_{recall}^{3}} = \frac{1}{n}\sum_{i}^{n} \frac{\left |Gold_{i} \cap  System_{i} \right |}{\left | Gold_{i} \right |}`$
+
+    - incorporate the word distance information by first initializing distance embedding in init() function, then concatenate the original embedding and the corresponding distance embedding in scorer() ~0.925 accuracy in trainingIn my fancy model implementation (more detailed explanation in writeup)
+    - in my final model I used a 10K dictionary instead of 50K, I used 200-d representation of word embeddings instead of 50-d, included similarity between the tokens in word's sentence and in the mention's sentence (cosine similarity), used distance between two words in terms of absolute index, used parallelism between two words' positions in their respective sentences, using bins for the first 2 words, the first 5 words, the first 7 words, the first 10 words and further away. I also tried to included information about gender agreement (male, female, neutral) and number agreement (singular plural) but I couldn't find an already existing dictionary to download to use with the mentions.
 
 
-## 7. Transformers:
+## 7. Transformers in Question Answering & Response Generation:
+    - Created a Transformer Model and a Decoder to analyze dialogues and allow model to respond to questions etc
+    - Included the effect of emotions by training two different models by considering 2 equal-sized collections of emotions represented in dialogues:
+```positive_emotions = ['anticipating', 'caring', 'confident', 'content', 'excited', 'faithful', 'grateful', 'hopeful', 'impressed', 'joyful', 'nostalgic', 'prepared', 'proud', 'sentimental','surprised','trusting']
+negative_emotions = ['afraid', 'angry', 'annoyed', 'anxious', 'apprehensive', 'ashamed','devastated','disappointed','disgusted', 'embarrassed','furious','guilty','jealous','lonely','sad','terrified']```
+    - Train 2 models one specifically trained on positive emotion-ed dialogues and other specifically trained on negative emotion-ed dialogues only.
+        1) decode the positive model on some positive data to see the types of responses it produces
+        2) decode the negative model on some negative data to see the types of responses it produces.
+        3) decode both models on some positive data to see the types of responses it produces.
+        4) decode both models on some negative data to see the types of responses it produces.
+        5) see which model does better when evaluated on the other's development set
+
